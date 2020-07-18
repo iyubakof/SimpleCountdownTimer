@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: rgb(250, 188, 65);
+            background: -moz-linear-gradient(321deg, rgba(250, 188, 65, 1) 0%, rgba(229, 100, 43, 1) 50%, rgba(192, 62, 36, 1) 100%);
+            background: -webkit-linear-gradient(321deg, rgba(250, 188, 65, 1) 0%, rgba(229, 100, 43, 1) 50%, rgba(192, 62, 36, 1) 100%);
+            background: linear-gradient(321deg, rgba(250, 188, 65, 1) 0%, rgba(229, 100, 43, 1) 50%, rgba(192, 62, 36, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fabc41", endColorstr="#c03e24", GradientType=1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="title">Days until Yvonne's 25th Birthday</h1>
+    <h1 id="timer"></h1>
+
+    <script>
+        const targetDate = new Date("Nov 22, 2020 19:13:00").getTime();
+
+        let x = setInterval(() => {
+            let today = new Date().getTime();
+            let timeDiff = targetDate - today;
+
+            let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            if (timeDiff < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "YOUR BIRTHDAY HAS PASSED";
+            }
+        }, 1000);
+    </script>
+
+</body>
+
+</html>
